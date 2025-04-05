@@ -183,6 +183,14 @@ const Game: React.FC = () => {
     <div className="game">
       {currentQuestion && (
         <>
+          <Timer
+            key={timerKey}
+            initialTime={INITIAL_TIME}
+            onTimeUp={() => {
+              if (!showCorrect) finalizeQuestion();
+            }}
+            onTick={setTimeLeft}
+          />
           <div className="score-board">
             <p>
               You
@@ -205,14 +213,6 @@ const Game: React.FC = () => {
             onSelect={(option, isPlayer) => {
               if (isPlayer) handlePlayerSelect(option);
             }}
-          />
-          <Timer
-            key={timerKey}
-            initialTime={INITIAL_TIME}
-            onTimeUp={() => {
-              if (!showCorrect) finalizeQuestion();
-            }}
-            onTick={setTimeLeft}
           />
         </>
       )}

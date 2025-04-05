@@ -92,5 +92,47 @@
     "question": "Which tool is used to deploy smart contracts?",
     "options": ["Truffle", "React", "Postman", "Docker"],
     "answer": "Truffle"
+  },
+
+  {
+    "id": 15,
+    "question": "Which language is primarily used for writing smart contracts on Ethereum?",
+    "options": ["Rust", "Solidity", "Python", "Go"],
+    "answer": "Solidity"
+  },
+  {
+    "id": 16,
+    "question": "What does NFT stand for?",
+    "options": [
+      "Non-Fixed Token",
+      "Non-Fungible Token",
+      "New Financial Token",
+      "Non-Federal Trade"
+    ],
+    "answer": "Non-Fungible Token"
+  },
+  {
+    "id": 17,
+    "question": "Which of the following is a Layer 2 scaling solution for Ethereum?",
+    "options": ["Solana", "Polygon", "Avalanche", "Cosmos"],
+    "answer": "Polygon"
+  },
+  {
+    "id": 18,
+    "question": "What is the smallest unit of Bitcoin called?",
+    "options": ["Satoshi", "Bit", "Bytecoin", "Finney"],
+    "answer": "Satoshi"
+  },
+  {
+    "id": 19,
+    "question": "Which function is used to receive Ether in a Solidity smart contract?",
+    "options": ["payable()", "fallback()", "constructor()", "receive()"],
+    "answer": "receive()"
+  },
+  {
+    "id": 20,
+    "question": "Which year was Bitcoin created?",
+    "options": ["2007", "2008", "2009", "2010"],
+    "answer": "2009"
   }
 ]
