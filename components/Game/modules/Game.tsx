@@ -162,6 +162,13 @@ const Game: React.FC = () => {
         <h2>Game Over</h2>
         <p>Your score: {playerScore}</p>
         <p>Opponent score: {opponentScore}</p>
+        <h3>
+          {playerScore > opponentScore
+            ? "You Win!"
+            : playerScore < opponentScore
+              ? "Opponent Wins!"
+              : "It's a Tie!"}
+        </h3>
         <button
           onClick={handleReplay}
           style={{
@@ -184,6 +191,9 @@ const Game: React.FC = () => {
     <div className="game">
       {currentQuestion && (
         <>
+          <h3 style={{ textAlign: "center" }}>
+            Question {currentQuestionIndex + 1} / {questions.length}
+          </h3>
           <Timer
             key={timerKey}
             initialTime={INITIAL_TIME}
