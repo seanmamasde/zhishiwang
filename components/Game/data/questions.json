@@ -27,5 +27,70 @@
     "question": "Which token standard is primarily used to represent unique, non-fungible digital assets?",
     "options": ["ERC-20", "ERC-721", "ERC-1155", "BEP-20"],
     "answer": "ERC-721"
+  },
+  {
+    "id": 5,
+    "question": "Which consensus mechanism is used by Ethereum after the Merge?",
+    "options": [
+      "Proof of Work",
+      "Proof of Stake",
+      "Delegated PoS",
+      "Proof of Authority"
+    ],
+    "answer": "Proof of Stake"
+  },
+  {
+    "id": 6,
+    "question": "Which network is known for using 'parachains'?",
+    "options": ["Ethereum", "Solana", "Polkadot", "Avalanche"],
+    "answer": "Polkadot"
+  },
+  {
+    "id": 7,
+    "question": "What does a smart contract run on?",
+    "options": ["Frontend", "Backend", "Blockchain", "DNS"],
+    "answer": "Blockchain"
+  },
+  {
+    "id": 8,
+    "question": "Which of the following is a layer 2 scaling solution?",
+    "options": ["Polygon", "Chainlink", "Uniswap", "Arweave"],
+    "answer": "Polygon"
+  },
+  {
+    "id": 9,
+    "question": "Which language is commonly used to write Ethereum smart contracts?",
+    "options": ["Rust", "Solidity", "Go", "JavaScript"],
+    "answer": "Solidity"
+  },
+  {
+    "id": 10,
+    "question": "Which standard allows for both fungible and non-fungible tokens?",
+    "options": ["ERC-20", "ERC-721", "ERC-1155", "BEP-721"],
+    "answer": "ERC-1155"
+  },
+  {
+    "id": 11,
+    "question": "Which platform is a decentralized storage network?",
+    "options": ["IPFS", "Firebase", "MongoDB", "AWS S3"],
+    "answer": "IPFS"
+  },
+  {
+    "id": 12,
+    "question": "What is the native token of the Solana network?",
+    "options": ["SOL", "ETH", "DOT", "BNB"],
+    "answer": "SOL"
+  },
+  {
+    "id": 13,
+    "question": "Which organization developed the ERC standards?",
+    "options": ["Ethereum Foundation", "Binance", "Coinbase", "Consensys"],
+    "answer": "Ethereum Foundation"
+  },
+  {
+    "id": 14,
+    "question": "Which tool is used to deploy smart contracts?",
+    "options": ["Truffle", "React", "Postman", "Docker"],
+    "answer": "Truffle"
   }
 ]
