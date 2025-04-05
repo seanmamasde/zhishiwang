@@ -22,7 +22,7 @@ const Timer: React.FC<TimerProps> = ({ initialTime, onTimeUp, onTick }) => {
   const progressBarStyle = {
     width: `${(timeLeft / initialTime) * 100}%`,
     height: "20px",
-    backgroundColor: timeLeft <= initialTime * 0.3 ? "red" : "green",
+    backgroundColor: timeLeft <= initialTime * 0.3 ? "magenta" : "turquoise",
     transition: "width 1s linear",
     display: "flex",
     alignItems: "center",
@@ -38,9 +38,21 @@ const Timer: React.FC<TimerProps> = ({ initialTime, onTimeUp, onTick }) => {
           width: "100%",
           backgroundColor: "lightgray",
           borderRadius: "5px",
+          position: "relative",
         }}
       >
-        <div style={progressBarStyle}>{timeLeft} s</div>
+        <div style={progressBarStyle}></div>
+        <div
+          style={{
+            position: "absolute",
+            width: "100%",
+            textAlign: "center",
+            color: "white",
+            fontWeight: "bold",
+          }}
+        >
+          {timeLeft} s
+        </div>
       </div>
     </div>
   );
