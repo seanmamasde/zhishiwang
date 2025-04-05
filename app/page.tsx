@@ -17,7 +17,8 @@ export default function Home() {
       >
         <SignIn onSessionChange={handleSessionChange} />
       </div>
-      {session && <Game />}
+      {/* {session && <Game />} */}
+      <Game />
     </main>
   );
 }

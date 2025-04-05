@@ -21,7 +21,7 @@ const Game: React.FC = () => {
   const [opponentScore, setOpponentScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [playerSelection, setPlayerSelection] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [opponentSelection, setOpponentSelection] = useState<
     string | undefined
@@ -31,7 +31,7 @@ const Game: React.FC = () => {
   const [showCorrect, setShowCorrect] = useState(false);
   const [playerAnswerTime, setPlayerAnswerTime] = useState<number | null>(null);
   const [opponentAnswerTime, setOpponentAnswerTime] = useState<number | null>(
-    null
+    null,
   );
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -60,7 +60,7 @@ const Game: React.FC = () => {
           chance < 0.7
             ? currentQuestion.answer
             : currentQuestion.options.filter(
-                (opt) => opt !== currentQuestion.answer
+                (opt) => opt !== currentQuestion.answer,
               )[
                 Math.floor(Math.random() * (currentQuestion.options.length - 1))
               ];
@@ -176,8 +176,16 @@ const Game: React.FC = () => {
       {currentQuestion && (
         <>
           <div className="score-board">
-            <p>Your Score: {playerScore}</p>
-            <p>Opponent Score: {opponentScore}</p>
+            <p>
+              You
+              <br />
+              {playerScore}
+            </p>
+            <p>
+              Opponent
+              <br />
+              {opponentScore}
+            </p>
           </div>
           <Question text={currentQuestion.question} />
           <AnswerOptions
@@ -198,7 +206,6 @@ const Game: React.FC = () => {
             }}
             onTick={setTimeLeft}
           />
-          <p>Time Left: {timeLeft} s</p>
         </>
       )}
     </div>

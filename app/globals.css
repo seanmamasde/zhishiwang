@@ -3,131 +3,132 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))
+        )
+        rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
 }
 
 /* styles.css */
 .app {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: "Arial", sans-serif;
-  text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Arial", sans-serif;
+    text-align: center;
 }
 
 h1 {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .score-board {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
 }
 
 .question h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
 }
 
 /* Grid layout for answer options */
 .answer-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
 /* Each answer option slot */
 .option-slot {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    margin: 10px;
 }
 
 .icon-slot {
-  width: 30px;
-  font-size: 1.2rem;
-  text-align: center;
+    width: 30px;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 /* Default button styling */
 .option-button {
-  flex: 1;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: white;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.3s;
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.3s;
 }
 
 /* Hover effect */
 .option-button:hover:not(:disabled) {
-  background: #f9f9f9;
+    background: #f9f9f9;
 }
 
 /* When the player selects an option */
 .option-button.selected-correct {
-  background: #4caf50; /* Green for correct */
-  color: white;
+    background: #4caf50; /* Green for correct */
+    color: white;
 }
 
 .option-button.selected-wrong {
-  background: #f44336; /* Red for wrong */
-  color: white;
+    background: #f44336; /* Red for wrong */
+    color: white;
 }
 
 /* Opponent's selection (if applicable) */
 .option-button.opponent-selected {
-  background: #90caf9;
-  color: white;
+    background: #90caf9;
+    color: white;
 }
 
 /* When showing correct answer in finalize phase */
 .option-button.correct {
-  background: #4caf50;
-  color: white;
+    background: #4caf50;
+    color: white;
 }
 
 .timer p {
-  font-size: 1.2rem;
-  margin-top: 20px;
+    font-size: 1.2rem;
+    margin-top: 20px;
 }
 
 .game-over h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
