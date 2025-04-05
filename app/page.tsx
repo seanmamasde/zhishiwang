@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PayBlock } from "@/components/Pay";
 import { SignIn } from "@/components/SignIn";
-import { VerifyBlock } from "@/components/Verify";
 import Game from "@/components/Game/modules/Game";
 
 export default function Home() {
@@ -14,9 +12,11 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 gap-y-3">
-      <SignIn onSessionChange={handleSessionChange} />
-      {/* <VerifyBlock />
-      <PayBlock /> */}
+      <div
+        className={`${!session ? "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" : "fixed top-4 right-4"}`}
+      >
+        <SignIn onSessionChange={handleSessionChange} />
+      </div>
       {session && <Game />}
     </main>
   );

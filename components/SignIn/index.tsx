@@ -2,17 +2,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
 
-// Helper function
-const wrapText = (text: string, width: number = 10): string => {
-  return text.replace(new RegExp(`(.{${width}})`, "g"), "$1\n");
-};
-
-// In your component:
-const MyComponent = ({ session }: { session: any }) => {
-  const jsonStr = JSON.stringify(session, null, 2); // optional formatting
-  return <pre>{wrapText(jsonStr, 30)}</pre>;
-};
-
 export const SignIn = ({
   onSessionChange,
 }: {
@@ -27,17 +16,14 @@ export const SignIn = ({
   if (session) {
     return (
       <>
-        <MyComponent session={session} />
-        Signed in as {session?.user?.name?.slice(0, 10)} <br />
-        Email {session?.user?.email?.slice(0, 10)} <br />
+        {session?.user?.name?.slice(0, 10)}
         <button onClick={() => signOut()}>Sign out</button>
       </>
     );
   } else {
     return (
       <>
-        Not signed in <br />
-        <button onClick={() => signIn()}>Sign in</button>
+        <button onClick={() => signIn()}>Sign in with World</button>
       </>
     );
   }
