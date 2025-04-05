@@ -31,19 +31,25 @@ const Game: React.FC = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   const handleOptionSelect = (option: string, isPlayer: boolean) => {
-    if (isPlayer && !playerSelection) {
+    if (isPlayer) {
       setPlayerSelection(option);
-    } else if (!isPlayer && !opponentSelection) {
+    } else {
       setOpponentSelection(option);
     }
 
-    if (playerSelection !== undefined && opponentSelection !== undefined) {
-      if (playerSelection === currentQuestion.answer) {
+    // Check if both player and opponent have made their selections
+    const updatedPlayerSelection = isPlayer ? option : playerSelection;
+    const updatedOpponentSelection = isPlayer ? opponentSelection : option;
+
+    if (updatedPlayerSelection && updatedOpponentSelection) {
+      // Update scores
+      if (updatedPlayerSelection === currentQuestion.answer) {
         setPlayerScore((prev) => prev + 1);
       }
-      if (opponentSelection === currentQuestion.answer) {
+      if (updatedOpponentSelection === currentQuestion.answer) {
         setOpponentScore((prev) => prev + 1);
       }
+      // Move to next question after a short delay
       setTimeout(() => {
         nextQuestion();
       }, 1000);
@@ -92,6 +98,7 @@ const Game: React.FC = () => {
         options={currentQuestion.options}
         playerSelection={playerSelection}
         opponentSelection={opponentSelection}
+        onOptionSelect={handleOptionSelect}
       />
       <Timer key={timerKey} initialTime={10} onTimeUp={handleTimeUp} />
       <p>Your Score: {playerScore}</p>

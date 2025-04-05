@@ -4,36 +4,39 @@ interface AnswerOptionsProps {
   options: string[];
   playerSelection?: string;
   opponentSelection?: string;
+  onOptionSelect: (option: string, isPlayer: boolean) => void;
 }
 
 const AnswerOptions: React.FC<AnswerOptionsProps> = ({
   options,
   playerSelection,
   opponentSelection,
+  onOptionSelect,
 }) => {
-  const [computerSelection, setComputerSelection] = useState<string>();
-
+  // Computer opponent logic
   useEffect(() => {
-    if (playerSelection && !computerSelection) {
+    if (!opponentSelection) {
       const delay = Math.random() * 2000 + 500; // Random delay between 0.5-2.5s
       const randomOption = options[Math.floor(Math.random() * options.length)];
 
-      setTimeout(() => {
-        setComputerSelection(randomOption);
+      const timeoutId = setTimeout(() => {
+        onOptionSelect(randomOption, false); // false indicates computer selection
       }, delay);
+
+      return () => clearTimeout(timeoutId);
     }
-  }, [playerSelection, options, computerSelection]);
+  }, [options, opponentSelection, onOptionSelect]);
 
   return (
     <div className="answer-options">
       {options.map((option, index) => (
         <button
           key={index}
+          onClick={() => onOptionSelect(option, true)} // true indicates player selection
           disabled={playerSelection !== undefined}
-          className={
-            (option === playerSelection ? "player-selected" : "") ||
-            (option === opponentSelection ? "computer-selected" : "")
-          }
+          className={`option-button ${
+            option === playerSelection ? "player-selected" : ""
+          } ${option === opponentSelection ? "computer-selected" : ""}`}
           style={{
             display: "block",
             margin: "10px",
