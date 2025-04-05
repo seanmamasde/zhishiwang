@@ -1,5 +1,6 @@
 "use client";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 // Helper function
 const wrapText = (text: string, width: number = 10): string => {
@@ -12,8 +13,13 @@ const MyComponent = ({ session }: { session: any }) => {
   return <pre>{wrapText(jsonStr, 30)}</pre>;
 };
 
-export const SignIn = () => {
+export const SignIn = ({ onSessionChange }) => {
   const { data: session } = useSession();
+
+  useEffect(() => {
+    onSessionChange?.(session);
+  }, [session]);
+
   if (session) {
     return (
       <>
