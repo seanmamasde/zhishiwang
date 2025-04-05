@@ -166,8 +166,8 @@ const Game: React.FC = () => {
           {playerScore > opponentScore
             ? "You Win!"
             : playerScore < opponentScore
-              ? "Opponent Wins!"
-              : "It's a Tie!"}
+              ? "You Lose..."
+              : "It's a Tie."}
         </h3>
         <button
           onClick={handleReplay}
@@ -203,12 +203,12 @@ const Game: React.FC = () => {
             onTick={setTimeLeft}
           />
           <div className="score-board">
-            <p>
+            <p style={{ textAlign: "center" }}>
               You
               <br />
               {playerScore}
             </p>
-            <p>
+            <p style={{ textAlign: "center" }}>
               Opponent
               <br />
               {opponentScore}
