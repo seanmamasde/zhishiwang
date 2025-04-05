@@ -44,6 +44,7 @@ const AnswerOptions: React.FC<AnswerOptionsProps> = ({
               onClick={() => onSelect(option, true)}
               disabled={playerSelection !== undefined}
               className={btnClass}
+              style={{ textAlign: "center" }}
             >
               {option}
             </button>

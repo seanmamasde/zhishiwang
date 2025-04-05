@@ -160,13 +160,21 @@ const Game: React.FC = () => {
     return (
       <div className="game-over">
         <h2>Game Over</h2>
-        <p>
-          Your score: {playerScore} / {questions.length}
-        </p>
-        <p>
-          Opponent score: {opponentScore} / {questions.length}
-        </p>
-        <button onClick={handleReplay}>Replay</button>
+        <p>Your score: {playerScore}</p>
+        <p>Opponent score: {opponentScore}</p>
+        <button
+          onClick={handleReplay}
+          style={{
+            backgroundColor: "blue",
+            color: "white",
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Replay
+        </button>
       </div>
     );
   }
