@@ -16,7 +16,9 @@ export const SignIn = ({
   if (session) {
     return (
       <>
-        {session?.user?.name?.slice(0, 10)}
+        <span style={{ padding: "10px" }}>
+          {session?.user?.name?.slice(0, 10)}
+        </span>
         <button onClick={() => signOut()}>Sign out</button>
       </>
     );
