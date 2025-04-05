@@ -11,7 +11,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-12 gap-y-3">
+    <main className="flex min-h-screen flex-col items-center justify-center p-12">
       <div
         className={`${!session ? "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" : "fixed top-4 right-4"}`}
       >

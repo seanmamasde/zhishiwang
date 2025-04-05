@@ -168,6 +168,7 @@ const Game: React.FC = () => {
             backgroundColor: "blue",
             color: "white",
             padding: "10px 20px",
+            margin: "10px auto",
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",

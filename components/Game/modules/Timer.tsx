@@ -1,4 +1,3 @@
-// modules/Timer.tsx
 import React, { useEffect, useState } from "react";
 
 interface TimerProps {
@@ -20,9 +19,25 @@ const Timer: React.FC<TimerProps> = ({ initialTime, onTimeUp, onTick }) => {
     return () => clearTimeout(timerId);
   }, [timeLeft, onTimeUp, onTick]);
 
+  const progressBarStyle = {
+    width: `${(timeLeft / initialTime) * 100}%`,
+    height: "20px",
+    backgroundColor: "green",
+    transition: "width 1s linear",
+  };
+
   return (
     <div className="timer">
       <p>Time Left: {timeLeft} s</p>
+      <div
+        style={{
+          width: "100%",
+          backgroundColor: "lightgray",
+          borderRadius: "5px",
+        }}
+      >
+        <div style={progressBarStyle}></div>
+      </div>
     </div>
   );
 };
