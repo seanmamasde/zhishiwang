@@ -13,7 +13,11 @@ const MyComponent = ({ session }: { session: any }) => {
   return <pre>{wrapText(jsonStr, 30)}</pre>;
 };
 
-export const SignIn = ({ onSessionChange }) => {
+export const SignIn = ({
+  onSessionChange,
+}: {
+  onSessionChange: (session: any) => void;
+}) => {
   const { data: session } = useSession();
 
   useEffect(() => {

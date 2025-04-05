@@ -10,5 +10,22 @@
     "question": "What is 2 + 2?",
     "options": ["3", "4", "5", "6"],
     "answer": "4"
+  },
+  {
+    "id": 3,
+    "question": "In the Web3 architecture, which technology is most commonly used to build dApps?",
+    "options": [
+      "Centralized Database",
+      "Blockchain",
+      "Cloud Computing",
+      "Server-side Rendering"
+    ],
+    "answer": "Blockchain"
+  },
+  {
+    "id": 4,
+    "question": "Which token standard is primarily used to represent unique, non-fungible digital assets?",
+    "options": ["ERC-20", "ERC-721", "ERC-1155", "BEP-20"],
+    "answer": "ERC-721"
   }
 ]
