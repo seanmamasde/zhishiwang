@@ -34,6 +34,12 @@ const AnswerOptions: React.FC<AnswerOptionsProps> = ({
             (option === playerSelection ? "player-selected" : "") ||
             (option === opponentSelection ? "computer-selected" : "")
           }
+          style={{
+            display: "block",
+            margin: "10px",
+            padding: "10px 20px",
+            borderRadius: "8px",
+          }}
         >
           {option}
         </button>
