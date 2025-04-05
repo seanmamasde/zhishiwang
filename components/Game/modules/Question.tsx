@@ -1,3 +1,4 @@
+// modules/Question.tsx
 import React from "react";
 
 interface QuestionProps {

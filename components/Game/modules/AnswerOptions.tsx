@@ -1,52 +1,55 @@
-import React, { useState, useEffect } from "react";
+// modules/AnswerOptions.tsx
+import React from "react";
 
 interface AnswerOptionsProps {
   options: string[];
   playerSelection?: string;
   opponentSelection?: string;
-  onOptionSelect: (option: string, isPlayer: boolean) => void;
+  correctAnswer: string;
+  showCorrect: boolean;
+  onSelect: (option: string, isPlayer: boolean) => void;
 }
 
 const AnswerOptions: React.FC<AnswerOptionsProps> = ({
   options,
   playerSelection,
   opponentSelection,
-  onOptionSelect,
+  correctAnswer,
+  showCorrect,
+  onSelect,
 }) => {
-  // Computer opponent logic
-  useEffect(() => {
-    if (!opponentSelection) {
-      const delay = Math.random() * 2000 + 500; // Random delay between 0.5-2.5s
-      const randomOption = options[Math.floor(Math.random() * options.length)];
-
-      const timeoutId = setTimeout(() => {
-        onOptionSelect(randomOption, false); // false indicates computer selection
-      }, delay);
-
-      return () => clearTimeout(timeoutId);
-    }
-  }, [options, opponentSelection, onOptionSelect]);
-
   return (
     <div className="answer-options">
-      {options.map((option, index) => (
-        <button
-          key={index}
-          onClick={() => onOptionSelect(option, true)} // true indicates player selection
-          disabled={playerSelection !== undefined}
-          className={`option-button ${
-            option === playerSelection ? "player-selected" : ""
-          } ${option === opponentSelection ? "computer-selected" : ""}`}
-          style={{
-            display: "block",
-            margin: "10px",
-            padding: "10px 20px",
-            borderRadius: "8px",
-          }}
-        >
-          {option}
-        </button>
-      ))}
+      {options.map((option, index) => {
+        let btnClass = "option-button";
+        let icon = null;
+        if (playerSelection !== undefined) {
+          if (option === playerSelection) {
+            if (option === correctAnswer) {
+              btnClass += " selected-correct";
+              icon = <span className="icon">✔</span>;
+            } else {
+              btnClass += " selected-wrong";
+              icon = <span className="icon">✖</span>;
+            }
+          } else if (showCorrect && option === correctAnswer) {
+            // Show correct answer indicator even if not selected.
+            icon = <span className="icon">✔</span>;
+          }
+        }
+        return (
+          <div key={index} className="option-slot">
+            <div className="icon-slot">{icon}</div>
+            <button
+              onClick={() => onSelect(option, true)}
+              disabled={playerSelection !== undefined}
+              className={btnClass}
+            >
+              {option}
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 };
