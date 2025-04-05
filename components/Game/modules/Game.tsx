@@ -13,39 +13,58 @@ interface QuestionType {
 
 const Game: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
+  const [playerScore, setPlayerScore] = useState(0);
+  const [opponentScore, setOpponentScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  // This key resets the timer on each new question
+  const [playerSelection, setPlayerSelection] = useState<string | undefined>(
+    undefined,
+  );
+  const [opponentSelection, setOpponentSelection] = useState<
+    string | undefined
+  >(undefined);
   const [timerKey, setTimerKey] = useState(0);
 
-  const questions: QuestionType[] = questionsData;
+  const questions: QuestionType[] = [...questionsData]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 5);
 
   const currentQuestion = questions[currentQuestionIndex];
 
-  const handleOptionSelect = (option: string) => {
-    if (selectedOption) return; // Prevent multiple selections
-    setSelectedOption(option);
-    if (option === currentQuestion.answer) {
-      setScore((prev) => prev + 1);
+  const handleOptionSelect = (option: string, isPlayer: boolean) => {
+    if (isPlayer && !playerSelection) {
+      setPlayerSelection(option);
+    } else if (!isPlayer && !opponentSelection) {
+      setOpponentSelection(option);
     }
-    // Wait a moment then move to next question
-    setTimeout(() => {
-      nextQuestion();
-    }, 1000);
+
+    if (playerSelection !== undefined && opponentSelection !== undefined) {
+      if (playerSelection === currentQuestion.answer) {
+        setPlayerScore((prev) => prev + 1);
+      }
+      if (opponentSelection === currentQuestion.answer) {
+        setOpponentScore((prev) => prev + 1);
+      }
+      setTimeout(() => {
+        nextQuestion();
+      }, 1000);
+    }
   };
 
   const handleTimeUp = () => {
-    if (!selectedOption) {
-      nextQuestion();
+    if (!playerSelection) {
+      setOpponentScore((prev) => prev + 1);
     }
+    if (!opponentSelection) {
+      setPlayerScore((prev) => prev + 1);
+    }
+    nextQuestion();
   };
 
   const nextQuestion = () => {
-    setSelectedOption(null);
+    setPlayerSelection(undefined);
+    setOpponentSelection(undefined);
     if (currentQuestionIndex + 1 < questions.length) {
       setCurrentQuestionIndex((prev) => prev + 1);
-      // Reset timer by changing key
       setTimerKey((prev) => prev + 1);
     } else {
       setGameOver(true);
@@ -57,7 +76,10 @@ const Game: React.FC = () => {
       <div className="game-over">
         <h2>Game Over</h2>
         <p>
-          Your score: {score} / {questions.length}
+          Your score: {playerScore} / {questions.length}
+        </p>
+        <p>
+          Opponent score: {opponentScore} / {questions.length}
         </p>
       </div>
     );
@@ -68,10 +90,12 @@ const Game: React.FC = () => {
       <Question text={currentQuestion.question} />
       <AnswerOptions
         options={currentQuestion.options}
-        onSelect={handleOptionSelect}
+        playerSelection={playerSelection}
+        opponentSelection={opponentSelection}
       />
-      <Timer key={timerKey} initialTime={5} onTimeUp={handleTimeUp} />
-      <p>Score: {score}</p>
+      <Timer key={timerKey} initialTime={10} onTimeUp={handleTimeUp} />
+      <p>Your Score: {playerScore}</p>
+      <p>Opponent Score: {opponentScore}</p>
     </div>
   );
 };
